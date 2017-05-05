@@ -10,18 +10,18 @@ var app = express();
 var Twitter = new twit(config);
 
 app.use(bodyParser.json());
-app.get('/myProfile_bot', function (req, res) {
-    res.json({name: "My Profile Bot", version: packageInfo.version});
+app.get('/meInformaDF', function (req, res) {
+    res.json({name: "Me Informa DF", version: packageInfo.version});
 })
 
-var server = app.listen(8082, "127.0.0.1", function () {
+var server = app.listen(8084, "127.0.0.1", function () {
     var host = server.address().address;
     var port = server.address().port;
     console.log('Web server started at http://%s:%s', host, port);
 });
 
 
-var tweetStream = Twitter.stream('statuses/filter', { follow: '850538373001486338, 851628825213587456'});
+var tweetStream = Twitter.stream('statuses/filter', { follow: '762000431916654592, 170012953, 282066682'});
 
 // on tweet
 tweetStream.on('tweet', function (tweet) {
