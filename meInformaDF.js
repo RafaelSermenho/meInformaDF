@@ -21,7 +21,7 @@ var server = app.listen(8084, "127.0.0.1", function () {
 });
 
 
-var tweetStream = Twitter.stream('statuses/filter', { follow: '762000431916654592, 170012953, 282066682'});
+var tweetStream = Twitter.stream('statuses/filter', { follow: '762000431916654592, 850538373001486338, 282066682, 3415759071'});
 
 // on tweet
 tweetStream.on('tweet', function (tweet) {
