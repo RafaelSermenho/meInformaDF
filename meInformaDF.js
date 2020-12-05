@@ -21,14 +21,16 @@ var server = app.listen(8084, "127.0.0.1", function () {
 });
 
 
-var tweetStream = Twitter.stream('statuses/filter', { follow: '762000431916654592, 850538373001486338, 282066682, 3415759071, 2314129536'});
+var tweetStream = Twitter.stream('statuses/filter', { follow: '762000431916654592, 2314129536, 791589421, 3343578298, 1082845448719794177'});
 
 // on tweet
 tweetStream.on('tweet', function (tweet) {
-    console.log(tweet);
-	Twitter.post('statuses/retweet', {id: tweet.id_str}, function (error, tweet, response) {
-        if (error) {
-            console.log(error);
-        }
-    });
+    if (tweet.in_reply_to_user_id_str == null) {
+        console.log(tweet);
+        Twitter.post('statuses/retweet', {id: tweet.id_str}, function (error, tweet, response) {
+           if (error) {
+                console.log(error);
+            }
+        });
+    }
 });
